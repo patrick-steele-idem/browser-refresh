@@ -1,17 +1,15 @@
 {
   "name": "browser-refresh",
   "version": "0.1.0-beta",
-  "description": "Layer on top of nodemon to enable automatic browser refreshes via WebSockets",
+  "description": "Node.js module to enable server restart and browser restart in response to file modifications",
   "main": "lib/index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/patrick-steele-idem/browser-refresh.git"
   },
   "keywords": [
-    "nodemon",
     "browser",
     "refresh",
     "live",
