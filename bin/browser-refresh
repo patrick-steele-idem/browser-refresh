@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('./browser-refresh-cli.js');
+require('../lib/cli');
