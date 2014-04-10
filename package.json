@@ -1,39 +1,38 @@
 {
-  "name": "browser-refresh",
-  "version": "0.1.0-beta",
-  "description": "Node.js module to enable server restart and browser restart in response to file modifications",
-  "main": "lib/index",
-  "scripts": {
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/patrick-steele-idem/browser-refresh.git"
-  },
-  "keywords": [
-    "browser",
-    "refresh",
-    "live",
-    "coding",
-    "reload",
-    "watch"
-  ],
-  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/patrick-steele-idem/browser-refresh/issues"
-  },
-  "homepage": "https://github.com/patrick-steele-idem/browser-refresh",
-  "bin": {
-    "browser-refresh": "bin/browser-refresh"
-  },
-  "dependencies": {
-    "raptor-args": "^0.1.13-beta",
-    "colors": "^0.6.2",
-    "socket.io": "^0.9.16",
-    "raptor-util": "^0.2.1-beta",
-    "minimatch": "^0.2.14",
-    "chokidar": "^0.8.2",
-    "raptor-ecma": "^0.2.0-beta",
-    "express": "^3.5.1"
-  }
+    "name": "browser-refresh",
+    "description": "Node.js module to enable server restart and browser restart in response to file modifications",
+    "main": "lib/index",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/patrick-steele-idem/browser-refresh.git"
+    },
+    "keywords": [
+        "browser",
+        "refresh",
+        "live",
+        "coding",
+        "reload",
+        "watch"
+    ],
+    "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/patrick-steele-idem/browser-refresh/issues"
+    },
+    "homepage": "https://github.com/patrick-steele-idem/browser-refresh",
+    "bin": {
+        "browser-refresh": "bin/browser-refresh"
+    },
+    "dependencies": {
+        "raptor-args": "^0.1.13-beta",
+        "colors": "^0.6.2",
+        "socket.io": "^0.9.16",
+        "raptor-util": "^0.2.1-beta",
+        "minimatch": "^0.2.14",
+        "chokidar": "^0.8.2",
+        "raptor-ecma": "^0.2.0-beta",
+        "express": "^3.5.1"
+    },
+    "version": "0.1.1-beta"
 }
