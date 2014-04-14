@@ -34,5 +34,5 @@
         "raptor-ecma": "^0.2.0-beta",
         "express": "^3.5.1"
     },
-    "version": "0.1.2-beta"
+    "version": "0.1.3-beta"
 }
