@@ -1,8 +1,7 @@
 {
-    "namespace": "browser-refresh",
     "tags": {
-        "refresh": {
-            "renderer": "lib/refresh-tag.js",
+        "browser-refresh": {
+            "renderer": "./lib/refresh-tag",
             "attributes": {
                 "enabled": "boolean"
             }
