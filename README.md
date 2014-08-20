@@ -10,7 +10,8 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
 
 * It starts as a web sockets server and provides a web sockets client
 * It sets an environment variable for the spawned child process to let it know that it was launched using `browser-refresh`
-* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`). Default ignores: 
+* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`). Default ignores:
+
     ```
     /node_modules
     .*
@@ -18,6 +19,7 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
     *.dust.js
     *.coffee.js
     ```
+
 * There is an optional taglib for [Raptor Templates](https://github.com/raptorjs3/raptor-templates) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
 * The `browser-refresh` process waits for the child process to tell it that it is read to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.sendMessage('online')`
 
