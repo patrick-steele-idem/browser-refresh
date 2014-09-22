@@ -20,7 +20,7 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
     *.coffee.js
     ```
 
-* There is an optional taglib for [Raptor Templates](https://github.com/raptorjs3/raptor-templates) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
+* There is an optional taglib for [Marko](https://github.com/raptorjs3/raptor-templates) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
 * The `browser-refresh` process waits for the child process to tell it that it is ready to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.sendMessage('online')`
 
 # Installation
@@ -51,7 +51,7 @@ app.listen(port, function() {
 });
 ```
 
-Then, in your project install the taglib to be used with either [Raptor Templates](https://github.com/raptorjs3/raptor-templates) or [Dust](https://github.com/linkedin/dustjs):
+Then, in your project install the taglib to be used with either [Marko](https://github.com/raptorjs3/raptor-templates) or [Dust](https://github.com/linkedin/dustjs):
 
 ```bash
 npm install browser-refresh-taglib --save
@@ -59,7 +59,7 @@ npm install browser-refresh-taglib --save
 
 Finally, update your page template based on the templating language that you are using:
 
-_For Raptor Templates:_
+_For Marko:_
 
 ```html
 <!doctype html>
