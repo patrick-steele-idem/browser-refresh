@@ -15,7 +15,7 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
     ```
     /node_modules
     .*
-    *.rhtml.js
+    *.marko.js
     *.dust.js
     *.coffee.js
     ```
