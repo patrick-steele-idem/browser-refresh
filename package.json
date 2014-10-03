@@ -29,9 +29,9 @@
         "colors": "^0.6.2",
         "express": "^3.5.1",
         "minimatch": "^0.2.14",
-        "raptor-args": "^0.1.13-beta",
-        "raptor-polyfill": "^0.2.0-beta",
-        "raptor-util": "^0.2.1-beta",
+        "raptor-args": "^1",
+        "raptor-polyfill": "^1",
+        "raptor-util": "^1",
         "socket.io": "^1.0.6"
     },
     "version": "1.1.0"
