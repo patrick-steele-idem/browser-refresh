@@ -14,6 +14,7 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
 
     ```
     /node_modules
+    /static
     .*
     *.marko.js
     *.dust.js
@@ -122,9 +123,40 @@ browser-refresh server.js --foo --bar
 
 After launching your application using the `browser-refresh` command, you can then load any web page as normal. If the `<browser-refresh>` tag (or `{@browser-refresh/}` helper) were used then any time a resoure is modified then the application will be restarted and, then, when the server is ready a message will be sent to all of the connected browsers via a web socket connection to trigger a reload of the same web page.
 
-# Other Considerations
+# Controlling Reloading
 
-This module does _not_ try to be clever when refreshing a page. A full page reload is always used whenever any type of file is modified on the server. This ensures that the page state will always be correct and avoids frustrating edge cases.
+By default, this module does _not_ try to be clever when handling a file modification. That is, by default, a full server restart and a full web page refresh are used whenever any type of file is modified on the server. This ensures that the server state and the client-side page state will always be correct and avoids frustrating edge cases. However, the `browser-refresh` module allows for modules to register "special reload" handlers that can short-circuit a full server restart. To disable a full server restart for a particular file pattern, the child process needs to send a message to the `browser-refresh` process using the `process.sendMessage()` message as shown below:
+
+```javascript
+process.send({
+    type: 'browser-refresh.specialReload',
+    patterns: '*.css *.less',
+    modifiedEvent: 'styleFileModified'
+});
+```
+
+The `modifiedEvent` property is used to get notified by the parent `browser-refresh` process when a matching file was modified. The child process can then subscribe to that event and handle the modification accordingly as shown in the following code:
+
+```javascript
+process.on('message', function(message) {
+    if (message.type === 'styleFileModified') {
+        var path = message.path;
+        // Handle modification of the file...
+    }
+});
+```
+
+Both the [marko](https://github.com/raptorjs/marko) and [optimizer](https://github.com/raptorjs/optimizer) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
+
+```javascript
+require('marko/browser-refresh').enable();
+require('optimizer/browser-refresh').enable('*.marko *.css *.less');
+```
+
+To add your own special reload handlers for the `browser-refresh` module, please use the following code as a guide:
+
+- [marko/browser-refresh/index.js](https://github.com/raptorjs/marko/blob/master/browser-refresh/index.js)
+- [optimizer/browser-refresh/index.js](https://github.com/raptorjs/optimizer/blob/master/browser-refresh/index.js)
 
 # Maintainers
 

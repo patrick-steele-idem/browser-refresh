@@ -1,6 +1,6 @@
 {
     "name": "browser-refresh",
-    "description": "Node.js module to enable server restart and browser restart in response to file modifications",
+    "description": "Node.js module to enable server updates and restart and browser refresh in response to file modifications",
     "main": "lib/index",
     "scripts": {},
     "repository": {
@@ -34,5 +34,5 @@
         "raptor-util": "^1",
         "socket.io": "^1.0.6"
     },
-    "version": "1.1.1"
+    "version": "1.2.0"
 }
