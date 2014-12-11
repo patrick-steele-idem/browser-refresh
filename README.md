@@ -125,25 +125,17 @@ After launching your application using the `browser-refresh` command, you can th
 
 # Controlling Reloading
 
-By default, this module does _not_ try to be clever when handling a file modification. That is, by default, a full server restart and a full web page refresh are used whenever any type of file is modified on the server. This ensures that the server state and the client-side page state will always be correct and avoids frustrating edge cases. However, the `browser-refresh` module allows for modules to register "special reload" handlers that can short-circuit a full server restart. To disable a full server restart for a particular file pattern, the child process needs to send a message to the `browser-refresh` process using the `process.sendMessage()` message as shown below:
+By default, this module does _not_ try to be clever when handling a file modification. That is, by default, a full server restart and a full web page refresh are used whenever any type of file is modified on the server. This ensures that the server state and the client-side page state will always be correct and avoids frustrating edge cases. However, the `browser-refresh` module allows for modules to register "special reload" handlers that can short-circuit a full server restart. To disable a full server restart for a particular file pattern, the child process needs to send a message to the `browser-refresh` launcher process using the [browser-refresh-client](https://github.com/patrick-steele-idem/browser-refresh-client) module.
+
+For example, to enable special reloading, the following code can be used:
 
 ```javascript
-process.send({
-    type: 'browser-refresh.specialReload',
-    patterns: '*.css *.less',
-    modifiedEvent: 'styleFileModified'
-});
-```
-
-The `modifiedEvent` property is used to get notified by the parent `browser-refresh` process when a matching file was modified. The child process can then subscribe to that event and handle the modification accordingly as shown in the following code:
-
-```javascript
-process.on('message', function(message) {
-    if (message.type === 'styleFileModified') {
-        var path = message.path;
-        // Handle modification of the file...
-    }
-});
+require('browser-refresh-client')
+    .enableSpecialReload('*.foo *.bar')
+    .onFileModified(function(path) {
+        // Handle the modification of either a *.foo file or
+        // a *.bar file...
+    });
 ```
 
 Both the [marko](https://github.com/raptorjs/marko) and [optimizer](https://github.com/raptorjs/optimizer) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
