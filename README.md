@@ -60,7 +60,7 @@ npm install browser-refresh-taglib --save
 
 Finally, update your page template based on the templating language that you are using:
 
-_For Marko:_
+## For Marko
 
 ```html
 <!doctype html>
@@ -76,7 +76,7 @@ _For Marko:_
 </html>
 ```
 
-_For Dust:_
+## For Dust
 
 ```html
 <!doctype html>
@@ -98,6 +98,16 @@ If you are using, Dust, you will also need to add the following code to enable t
 var dust = require('dustjs-linkedin');
 require('browser-refresh-taglib/dust').registerHelpers(dust);
 ```
+
+## Not using Marko or Dust?
+
+When `browser-refresh` launches your app a new `BROWSER_REFRESH_URL` environment variable is added with the URL that should be used to include the client-side script. The value of `BROWSER_REFRESH_URL` will be similar to `http://localhost:12345/browser-refresh.js` (the port is random). You should include this library using code similar to the following:
+
+```html
+'<script src="{BROWSER_REFRESH_URL}"></script>'
+```
+
+
 
 # Usage
 
