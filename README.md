@@ -22,7 +22,7 @@ Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has 
     ```
 
 * There is an optional taglib for [Marko](https://github.com/raptorjs3/raptor-templates) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
-* The `browser-refresh` process waits for the child process to tell it that it is ready to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.sendMessage('online')`
+* The `browser-refresh` process waits for the child process to tell it that it is ready to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.send('online')`
 
 # Installation
 
