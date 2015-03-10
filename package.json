@@ -27,7 +27,7 @@
   "dependencies": {
     "colors": "^0.6.2",
     "express": "^3.5.1",
-    "ignoring-watcher": "^1.0.0",
+    "ignoring-watcher": "^1.0.5",
     "jsonminify": "^0.2.3",
     "minimatch": "^2.0.1",
     "raptor-args": "^1",
