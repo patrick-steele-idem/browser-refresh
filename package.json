@@ -1,42 +1,42 @@
 {
-  "name": "browser-refresh",
-  "description": "Node.js module to enable server updates and restart and browser refresh in response to file modifications",
-  "main": "lib/index",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/patrick-steele-idem/browser-refresh.git"
-  },
-  "keywords": [
-    "browser",
-    "refresh",
-    "live",
-    "coding",
-    "reload",
-    "watch"
-  ],
-  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/patrick-steele-idem/browser-refresh/issues"
-  },
-  "homepage": "https://github.com/patrick-steele-idem/browser-refresh",
-  "bin": {
-    "browser-refresh": "bin/browser-refresh"
-  },
-  "dependencies": {
-    "async": "^0.9.0",
-    "browser-request": "^0.3.3",
-    "browserify": "^9.0.3",
-    "colors": "^0.6.2",
-    "express": "^3.5.1",
-    "ignoring-watcher": "^1.0.5",
-    "jsonminify": "^0.2.3",
-    "minimatch": "^2.0.1",
-    "raptor-args": "^1",
-    "raptor-polyfill": "^1",
-    "raptor-util": "^1",
-    "socket.io": "^1.0.6"
-  },
-  "version": "1.4.0"
+    "name": "browser-refresh",
+    "description": "Node.js module to enable server updates and restart and browser refresh in response to file modifications",
+    "main": "lib/index",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/patrick-steele-idem/browser-refresh.git"
+    },
+    "keywords": [
+        "browser",
+        "refresh",
+        "live",
+        "coding",
+        "reload",
+        "watch"
+    ],
+    "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/patrick-steele-idem/browser-refresh/issues"
+    },
+    "homepage": "https://github.com/patrick-steele-idem/browser-refresh",
+    "bin": {
+        "browser-refresh": "bin/browser-refresh"
+    },
+    "dependencies": {
+        "async": "^0.9.0",
+        "browser-request": "^0.3.3",
+        "browserify": "^9.0.3",
+        "colors": "^0.6.2",
+        "express": "^3.5.1",
+        "ignoring-watcher": "^1.0.5",
+        "jsonminify": "^0.2.3",
+        "minimatch": "^2.0.1",
+        "raptor-args": "^1",
+        "raptor-polyfill": "^1",
+        "raptor-util": "^1",
+        "socket.io": "^1.0.6"
+    },
+    "version": "1.4.1"
 }
