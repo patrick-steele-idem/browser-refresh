@@ -1,6 +1,6 @@
 browser-refresh
 ===============
-This module improves productivity by enabling instant web page refreshes anytime a front-end resource is modified on the server. This module utilizes the very efficient [chokidar](https://github.com/paulmillr/chokidar) module for watching for changes to the file system. Web sockets are used to communicate with the browser. Minimal application code changes are required to benefit from this module.
+This module improves productivity by enabling instant web page refreshes anytime a front-end resource is modified on the server. This module supports live reloading of CSS and JavaScript without doing a full page refresh. This module utilizes the very efficient [chokidar](https://github.com/paulmillr/chokidar) module for watching for changes to the file system. Web sockets are used to communicate with the browser.  Minimal application code changes are required to benefit from this module.
 
 # Overview
 
@@ -152,13 +152,38 @@ Both the [marko](https://github.com/raptorjs/marko) and [optimizer](https://gith
 
 ```javascript
 require('marko/browser-refresh').enable();
-require('optimizer/browser-refresh').enable('*.marko *.css *.less');
+require('optimizer/browser-refresh').enable('*.marko *.css *.less *.styl *.scss *.sass *.png *.jpeg *.jpg *.gif *.webp *.svg');
 ```
 
 To add your own special reload handlers for the `browser-refresh` module, please use the following code as a guide:
 
 - [marko/browser-refresh/index.js](https://github.com/raptorjs/marko/blob/master/browser-refresh/index.js)
 - [optimizer/browser-refresh/index.js](https://github.com/raptorjs/optimizer/blob/master/browser-refresh/index.js)
+
+# Refreshing CSS and Images
+
+For improved developer productivity, this module supports refreshing of CSS and images without doing a full page refresh (similar to LiveReload). This is an opt-in feature that can be enabled using code similar to the following:
+
+```javascript
+var patterns = '*.css *.less *.styl *.scss *.sass *.png *.jpeg *.jpg *.gif *.webp *.svg';
+
+require('browser-refresh-client')
+    .enableSpecialReload(patterns, { autoRefresh: false })
+    .onFileModified(function(path) {
+        // Code to handle the file modification goes here.
+
+        // Now trigger a refresh when we are ready:
+        if (isImage(path)) {
+            browserRefreshClient.refreshImages();
+        } else if (isStyle(path)) {
+            browserRefreshClient.refreshStyles();
+        } else {
+            browserRefreshClient.refreshPage();
+        }
+    });
+```
+
+If you are using `require('optimizer/browser-refresh').enable(patterns)`, it is doing this for you automatically. Please see: [optimizer/browser-refresh/index.js](https://github.com/raptorjs/optimizer/blob/master/browser-refresh/index.js)
 
 # Maintainers
 
