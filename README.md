@@ -148,17 +148,17 @@ require('browser-refresh-client')
     });
 ```
 
-Both the [marko](https://github.com/raptorjs/marko) and [optimizer](https://github.com/raptorjs/optimizer) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
+Both the [marko](https://github.com/raptorjs/marko) and [lasso](https://github.com/lasso-js/lasso) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
 
 ```javascript
 require('marko/browser-refresh').enable();
-require('optimizer/browser-refresh').enable('*.marko *.css *.less *.styl *.scss *.sass *.png *.jpeg *.jpg *.gif *.webp *.svg');
+require('lasso/browser-refresh').enable('*.marko *.css *.less *.styl *.scss *.sass *.png *.jpeg *.jpg *.gif *.webp *.svg');
 ```
 
 To add your own special reload handlers for the `browser-refresh` module, please use the following code as a guide:
 
 - [marko/browser-refresh/index.js](https://github.com/raptorjs/marko/blob/master/browser-refresh/index.js)
-- [optimizer/browser-refresh/index.js](https://github.com/raptorjs/optimizer/blob/master/browser-refresh/index.js)
+- [lasso/browser-refresh/index.js](https://github.com/lasso-js/lasso/blob/master/browser-refresh/index.js)
 
 # Refreshing CSS and Images
 
@@ -183,7 +183,7 @@ require('browser-refresh-client')
     });
 ```
 
-If you are using `require('optimizer/browser-refresh').enable(patterns)`, it is doing this for you automatically. Please see: [optimizer/browser-refresh/index.js](https://github.com/raptorjs/optimizer/blob/master/browser-refresh/index.js)
+If you are using `require('lasso/browser-refresh').enable(patterns)`, it is doing this for you automatically. Please see: [lasso/browser-refresh/index.js](https://github.com/lasso-js/lasso/blob/master/browser-refresh/index.js)
 
 # Maintainers
 
