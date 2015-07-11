@@ -6,7 +6,7 @@ This module improves productivity by enabling instant web page refreshes anytime
 
 Like nodemon, this module provides a drop-in replacement for the `node` command.
 
-Compared to [nodemon](https://github.com/remy/nodemon), the browser-refresh has the following benefits:
+Compared to [nodemon](https://github.com/remy/nodemon), the `browser-refresh` module has the following benefits:
 
 * It starts as a web sockets server and provides a web sockets client
 * It sets an environment variable for the spawned child process to let it know that it was launched using `browser-refresh`
