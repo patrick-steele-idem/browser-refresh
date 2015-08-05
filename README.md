@@ -60,6 +60,29 @@ npm install browser-refresh-taglib --save
 
 Finally, update your page template based on the templating language that you are using:
 
+## Configuration
+
+Some of the features of the `browser-refresh` module can be configured by creating
+a `.browser-refresh` JSON configuration file at the root of your project.
+
+### SSL Support
+
+To enable SSL support you must provide values `sslCert` and `sslKey`
+in your `.browser-refresh` configuration file.
+
+- `sslCert`: The path to a SSL certificate
+- `sslKey`: The path to a SSL key
+
+**Example:**
+
+```json
+{
+    "sslCert": "server.crt",
+    "sslKey": "server.key"
+}
+```
+
+
 ## For Marko
 
 ```html
