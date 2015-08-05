@@ -4,26 +4,38 @@ This module improves productivity by enabling instant web page refreshes anytime
 
 # Overview
 
-Like nodemon, this module provides a drop-in replacement for the `node` command.
+Like `nodemon`, this module provides a drop-in replacement for the `node` command.
 
 Compared to [nodemon](https://github.com/remy/nodemon), the `browser-refresh` module has the following benefits:
 
 * It starts as a web sockets server and provides a web sockets client
 * It sets an environment variable for the spawned child process to let it know that it was launched using `browser-refresh`
-* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`). Default ignores:
-
-    ```
-    'node_modules/',
-    'static/',
-    '.cache/',
-    '.*',
-    '*.marko.js',
-    '*.dust.js',
-    '*.coffee.js'
-    ```
-
+* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`).
 * There is an optional taglib for [Marko](https://github.com/marko-js/marko) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
 * The `browser-refresh` process waits for the child process to tell it that it is ready to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.send('online')`
+
+File patterns to ignore are automatically loaded from the first file that
+exists in the following list:
+
+0. `.browser-refresh-ignore` file in the current working directory
+1. `.gitignore` file in the current working directory
+
+If no ignore file is found then the following ignore file patterns are used:
+
+```
+node_modules/
+static/
+.cache/
+.*
+*.marko.js
+*.dust.js
+*.coffee.js
+```
+
+**NOTE:**
+
+Patterns to ignore files with a directory should have `/` at the end.
+For example, to ignore `node_modules` directory use `node_modules/`.
 
 # Installation
 
