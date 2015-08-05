@@ -4,25 +4,38 @@ This module improves productivity by enabling instant web page refreshes anytime
 
 # Overview
 
-Like nodemon, this module provides a drop-in replacement for the `node` command.
+Like `nodemon`, this module provides a drop-in replacement for the `node` command.
 
 Compared to [nodemon](https://github.com/remy/nodemon), the `browser-refresh` module has the following benefits:
 
 * It starts as a web sockets server and provides a web sockets client
 * It sets an environment variable for the spawned child process to let it know that it was launched using `browser-refresh`
-* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`). Default ignores:
-
-    ```
-    /node_modules
-    /static
-    .*
-    *.marko.js
-    *.dust.js
-    *.coffee.js
-    ```
-
-* There is an optional taglib for [Marko](https://github.com/raptorjs3/raptor-templates) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
+* Instead of configuring which directories/files to watch, you instead configure which directories/files to _not_ watch using an optional `.browser-refresh-ignore` file (same format as `.gitignore` and `.npmignore`).
+* There is an optional taglib for [Marko](https://github.com/marko-js/marko) and [Dust](https://github.com/linkedin/dustjs) that injects the `browser-refresh` [client](https://github.com/patrick-steele-idem/browser-refresh/blob/master/lib/browser-refresh-client.js) if the application was launched using `browser-refresh`. Please see: [browser-refresh-taglib](https://github.com/patrick-steele-idem/browser-refresh-taglib)
 * The `browser-refresh` process waits for the child process to tell it that it is ready to start serving traffic so that the web browser page is not refreshed too soon. This is done by the child process using `process.send('online')`
+
+File patterns to ignore are automatically loaded from the first file that
+exists in the following list:
+
+0. `.browser-refresh-ignore` file in the current working directory
+1. `.gitignore` file in the current working directory
+
+If no ignore file is found then the following ignore file patterns are used:
+
+```
+node_modules/
+static/
+.cache/
+.*
+*.marko.js
+*.dust.js
+*.coffee.js
+```
+
+**NOTE:**
+
+Patterns to ignore files with a directory should have `/` at the end.
+For example, to ignore `node_modules` directory use `node_modules/`.
 
 # Installation
 
@@ -52,7 +65,7 @@ app.listen(port, function() {
 });
 ```
 
-Then, in your project install the taglib to be used with either [Marko](https://github.com/raptorjs3/raptor-templates) or [Dust](https://github.com/linkedin/dustjs):
+Then, in your project install the taglib to be used with either [Marko](https://github.com/marko-js/marko) or [Dust](https://github.com/linkedin/dustjs):
 
 ```bash
 npm install browser-refresh-taglib --save
@@ -171,7 +184,7 @@ require('browser-refresh-client')
     });
 ```
 
-Both the [marko](https://github.com/raptorjs/marko) and [lasso](https://github.com/lasso-js/lasso) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
+Both the [marko](https://github.com/marko-js/marko) and [lasso](https://github.com/lasso-js/lasso) modules provide support for enabling special reload handlers when using the `browser-refresh` module. Example usage:
 
 ```javascript
 require('marko/browser-refresh').enable();
@@ -180,7 +193,7 @@ require('lasso/browser-refresh').enable('*.marko *.css *.less *.styl *.scss *.sa
 
 To add your own special reload handlers for the `browser-refresh` module, please use the following code as a guide:
 
-- [marko/browser-refresh/index.js](https://github.com/raptorjs/marko/blob/master/browser-refresh/index.js)
+- [marko/browser-refresh/index.js](https://github.com/marko-js/marko/blob/master/browser-refresh/index.js)
 - [lasso/browser-refresh/index.js](https://github.com/lasso-js/lasso/blob/master/browser-refresh/index.js)
 
 # Refreshing CSS and Images
@@ -211,6 +224,7 @@ If you are using `require('lasso/browser-refresh').enable(patterns)`, it is doin
 # Maintainers
 
 * Patrick Steele-Idem ([Github: @patrick-steele-idem](http://github.com/patrick-steele-idem)) ([Twitter: @psteeleidem](http://twitter.com/psteeleidem))
+* Phillip Gates-Idem ([Github: @philidem](http://github.com/philidem)) ([Twitter: @psteeleidem](http://twitter.com/philidem))
 
 # Contribute
 
