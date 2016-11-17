@@ -65,13 +65,25 @@ app.listen(port, function() {
 });
 ```
 
-Then, in your project install the taglib to be used with either [Marko](https://github.com/marko-js/marko) or [Dust](https://github.com/linkedin/dustjs):
-
-```bash
-npm install browser-refresh-taglib --save
+Alternatively, pass an object that specifies a `url` for `browser-refresh` to launch the first time your app starts:
+```javascript
+if (process.send) {
+    process.send({ event:'online', url:'http://localhost:8080/' });
+}
 ```
 
-Finally, update your page template based on the templating language that you are using:
+Finally, add the following script to your page(s).  Just before the closing `</body>` tag is a good place.
+
+```html
+'<script src="{process.env.BROWSER_REFRESH_URL}"></script>'
+```
+
+> When `browser-refresh` launches your app a new `BROWSER_REFRESH_URL` environment variable is added with the URL that should be used to include the client-side script. The value of `BROWSER_REFRESH_URL` will be similar to `http://localhost:12345/browser-refresh.js` (the port is random).  You should use whatever means your templating language or UI library provides to add the script to your page(s).
+
+**If you're using [Marko](https://github.com/marko-js/marko),** checkout [`browser-refresh-taglib`](https://github.com/patrick-steele-idem/browser-refresh-taglib) which allows you to simply drop the following tag into your template instead of using the above `<script>` tag:
+```html
+<browser-refresh/>
+```
 
 ## Configuration
 
@@ -94,56 +106,6 @@ in your `.browser-refresh` configuration file.
     "sslKey": "server.key"
 }
 ```
-
-
-## For Marko
-
-```html
-<!doctype html>
-<html>
-    <head>
-        ...
-    </head>
-    <body>
-        ...
-
-        <browser-refresh enabled="true" />
-    </body>
-</html>
-```
-
-## For Dust
-
-```html
-<!doctype html>
-<html>
-    <head>
-        ...
-    </head>
-    <body>
-        ...
-
-        {@browser-refresh enabled="true" /}
-    </body>
-</html>
-```
-
-If you are using, Dust, you will also need to add the following code to enable the provided Dust helper:
-
-```javascript
-var dust = require('dustjs-linkedin');
-require('browser-refresh-taglib/dust').registerHelpers(dust);
-```
-
-## Not using Marko or Dust?
-
-When `browser-refresh` launches your app a new `BROWSER_REFRESH_URL` environment variable is added with the URL that should be used to include the client-side script. The value of `BROWSER_REFRESH_URL` will be similar to `http://localhost:12345/browser-refresh.js` (the port is random). You should include this library using code similar to the following:
-
-```html
-'<script src="{BROWSER_REFRESH_URL}"></script>'
-```
-
-
 
 # Usage
 
