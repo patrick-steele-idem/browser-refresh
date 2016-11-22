@@ -221,6 +221,14 @@ require('browser-refresh-client')
 
 If you are using `require('lasso/browser-refresh').enable(patterns)`, it is doing this for you automatically. Please see: [lasso/browser-refresh/index.js](https://github.com/lasso-js/lasso/blob/master/browser-refresh/index.js)
 
+# Passing arguments to `node`
+
+Any flags (arguments that start with `-`) before the script path will be passed to the node executable:
+
+```
+browser-refresh --debug index.js
+```
+
 # Maintainers
 
 * Patrick Steele-Idem ([Github: @patrick-steele-idem](http://github.com/patrick-steele-idem)) ([Twitter: @psteeleidem](http://twitter.com/psteeleidem))
