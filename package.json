@@ -33,6 +33,7 @@
     "ignoring-watcher": "^1.0.5",
     "jsonminify": "^0.2.3",
     "minimatch": "^2.0.1",
+    "open": "0.0.5",
     "raptor-args": "^1",
     "raptor-polyfill": "^1",
     "raptor-util": "^1",
