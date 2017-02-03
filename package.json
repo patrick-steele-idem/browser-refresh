@@ -39,5 +39,5 @@
     "raptor-util": "^1",
     "socket.io": "^1.0.6"
   },
-  "version": "1.7.0"
+  "version": "1.7.1"
 }
