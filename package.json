@@ -32,7 +32,7 @@
     "express": "^3.5.1",
     "ignoring-watcher": "^1.0.5",
     "jsonminify": "^0.2.3",
-    "minimatch": "^2.0.1",
+    "minimatch": "^3.0.4",
     "open": "0.0.5",
     "raptor-args": "^1",
     "raptor-polyfill": "^1",
