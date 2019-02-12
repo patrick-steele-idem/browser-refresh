@@ -107,6 +107,42 @@ in your `.browser-refresh` configuration file.
 }
 ```
 
+### Server-side Refresh Delay
+
+browser-refresh by default will refresh the active`tab` after `1500ms` when you server gets reloaded.
+In case if you're server is taking longer time, You can optionally disable the `delay` property by setting `delay` to `false` in the `.browser-refresh` config json.
+
+**Example:**
+```json
+{
+    "delay": false
+}
+```
+
+Note: After the server restart, the active page will get reloaded as long as you trigger the `online` event on `process.send`
+
+**Example:**
+```js
+app.listen(port, () => {
+    process.send && process.send('online'); // Process is a child process of browser-refresh
+});
+```
+
+### Open up WebPage on Server Startup
+
+You can open up a webpage on server startup by passing a `url` property to `process.send`
+
+**Example:**
+```js
+app.listen(port, () => {
+    process.send && process.send({ 
+        event: 'online', 
+        url: 'http://localhost:8080/' 
+    });
+});
+```
+
+
 # Usage
 
 Once you have installed `browser-refresh` using the directions provided above, you can then start your application as normal, except replace `node` with `browser-refresh`. For example:
