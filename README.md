@@ -109,7 +109,7 @@ in your `.browser-refresh` configuration file.
 
 ### Server-side Refresh Delay
 
-browser-refresh by default will refresh the active`tab` after `1500ms` when you server gets reloaded.
+browser-refresh by default will refresh the active tab after `1500ms` when you server gets reloaded.
 In case if you're server is taking longer time, You can optionally disable the `delay` property by setting `delay` to `false` in the `.browser-refresh` config json.
 
 **Example:**
