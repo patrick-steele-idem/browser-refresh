@@ -235,6 +235,12 @@ Any flags (arguments that start with `-`) before the script path will be passed 
 browser-refresh --debug index.js
 ```
 
+To use Typescript, you will need to require the ts-node register:
+
+```
+browser-refresh --require ts-node/register ./index.ts
+```
+
 # Maintainers
 
 * Patrick Steele-Idem ([Github: @patrick-steele-idem](http://github.com/patrick-steele-idem)) ([Twitter: @psteeleidem](http://twitter.com/psteeleidem))
